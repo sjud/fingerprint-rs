@@ -1,0 +1,15 @@
+[package]
+name = "fingerprint-rs"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+js-sys = "0.3.70"
+wasm-bindgen = "0.2.93"
+wasm-bindgen-futures = "0.4.43"
+wasm-bindgen-test = "0.3.43"
+tokio = {version = "1.39.3", default-features=false, features=["sync"]}
+web-sys = {version="0.3.70",features=["Window","WebGlBuffer","ImageData","HtmlCollection","HtmlSpanElement","CssStyleDeclaration","WebglDebugRendererInfo","HtmlCanvasElement","WebGl2RenderingContext","WebGlContextAttributes","WebGlPowerPreference","WebGlShaderPrecisionFormat","WebGlProgram","WebGlShader","CanvasRenderingContext2d","CanvasWindingRule","OfflineAudioContext","HtmlMediaElement","OfflineAudioCompletionEvent","AudioBuffer","OfflineAudioContextOptions","DynamicsCompressorOptions","BaseAudioContext","AudioDestinationNode","OscillatorNode","OscillatorType","AudioParam","DynamicsCompressorNode","AudioContextState","Screen","ScreenColorGamut","IdbFactory","Storage","MediaRecorder","AudioContext","SerialPort","SerialPortInfo","Usb","UsbDevice", "Permissions","PermissionState","PermissionStatus","MediaDevices","MediaDeviceInfo","MediaDeviceKind","Serial","Document","Element", "Navigator", "Screen","Bluetooth","NetworkInformation","Geolocation","Gamepad","Gpu","WgslLanguageFeatures","GpuTextureFormat","MediaCapabilities","MediaEncodingType","MediaDecodingType","AudioConfiguration","MediaDecodingConfiguration","MediaEncodingConfiguration"]}
+gloo-timers = {version="0.3.0",features=["futures"]}
+lazy_static = "1.5.0"
+[dev-dependencies]

@@ -1,0 +1,77 @@
+name: CI - WASM Bindgen Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        browser: [firefox, chrome, safari]
+        include:
+          - os: ubuntu-latest
+            browser: firefox
+          - os: ubuntu-latest
+            browser: chrome
+          - os: macos-latest
+            browser: safari
+          - os: macos-latest
+            browser: firefox
+          - os: macos-latest
+            browser: chrome
+          - os: windows-latest
+            browser: firefox
+          - os: windows-latest
+            browser: chrome
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          profile: minimal
+          override: true
+
+      - name: Install wasm-pack
+        run: |
+          cargo install wasm-pack
+
+      - name: Install browser for testing
+        if: matrix.browser == 'chrome'
+        run: |
+          if [ $RUNNER_OS == 'Linux' ]; then
+            sudo apt-get update
+            sudo apt-get install -y google-chrome-stable
+          elif [ $RUNNER_OS == 'macOS' ]; then
+            brew install --cask google-chrome
+          fi
+
+      - name: Install browser for testing
+        if: matrix.browser == 'firefox'
+        run: |
+          if [ $RUNNER_OS == 'Linux' ]; then
+            sudo apt-get update
+            sudo apt-get install -y firefox
+          elif [ $RUNNER_OS == 'macOS' ]; then
+            brew install --cask firefox
+          elif [ $RUNNER_OS == 'Windows' ]; then
+            choco install firefox -y
+          fi
+
+      - name: Install Safari Technology Preview (only on macOS)
+        if: matrix.browser == 'safari'
+        run: |
+          brew install --cask safari-technology-preview
+
+      - name: Run wasm-pack tests
+        run: |
+          wasm-pack test --headless --${{ matrix.browser }}
