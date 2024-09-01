@@ -67,7 +67,7 @@ async fn test_webgl() {
 #[wasm_bindgen_test]
 async fn test_fonts() {
     let fonts = detect_fonts(&window().unwrap().document().unwrap()).unwrap();
-    assert!(fonts != 0);
+    assert!(!fonts.is_empty());
     console_log!("{fonts:#?}");
 }
 

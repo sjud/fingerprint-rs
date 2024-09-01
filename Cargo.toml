@@ -2,6 +2,12 @@
 name = "fingerprint-rs"
 version = "0.1.0"
 edition = "2021"
+authors = ["Sam Judelson"]
+description = "Create browser fingerprints using wasm_bindgen and web_sys in rust."
+license = "MIT"
+repository = "https://github.com/sjud/fingerprint-rs"
+documentation = "https://docs.rs/crate/fingerprint-rs/0.1.0/"
+readme ="README.md"
 
 [dependencies]
 js-sys = "0.3.70"
@@ -10,6 +16,4 @@ wasm-bindgen-futures = "0.4.43"
 wasm-bindgen-test = "0.3.43"
 tokio = {version = "1.39.3", default-features=false, features=["sync"]}
 web-sys = {version="0.3.70",features=["Window","WebGlBuffer","ImageData","HtmlCollection","HtmlSpanElement","CssStyleDeclaration","WebglDebugRendererInfo","HtmlCanvasElement","WebGl2RenderingContext","WebGlContextAttributes","WebGlPowerPreference","WebGlShaderPrecisionFormat","WebGlProgram","WebGlShader","CanvasRenderingContext2d","CanvasWindingRule","OfflineAudioContext","HtmlMediaElement","OfflineAudioCompletionEvent","AudioBuffer","OfflineAudioContextOptions","DynamicsCompressorOptions","BaseAudioContext","AudioDestinationNode","OscillatorNode","OscillatorType","AudioParam","DynamicsCompressorNode","AudioContextState","Screen","ScreenColorGamut","IdbFactory","Storage","MediaRecorder","AudioContext","SerialPort","SerialPortInfo","Usb","UsbDevice", "Permissions","PermissionState","PermissionStatus","MediaDevices","MediaDeviceInfo","MediaDeviceKind","Serial","Document","Element", "Navigator", "Screen","Bluetooth","NetworkInformation","Geolocation","Gamepad","Gpu","WgslLanguageFeatures","GpuTextureFormat","MediaCapabilities","MediaEncodingType","MediaDecodingType","AudioConfiguration","MediaDecodingConfiguration","MediaEncodingConfiguration"]}
-gloo-timers = {version="0.3.0",features=["futures"]}
 lazy_static = "1.5.0"
-[dev-dependencies]
